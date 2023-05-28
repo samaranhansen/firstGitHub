@@ -137,6 +137,7 @@ ul {
   display: block;
   margin: 0 auto;
   text-align: center;
+  font-size: 18px;
 }
 
 .sourceCodeLink {
@@ -146,5 +147,5 @@ ul {
 }
 
 .sourceCodeLink:hover {
-  color: #fffbf3;
+  color: #f0a07b;
 }
