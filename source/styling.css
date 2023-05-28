@@ -132,3 +132,20 @@ ul {
 .futureIcons {
   text-align: center;
 }
+
+.footer {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 18px;
+}
+
+.sourceCodeLink {
+  color: #8e87b7;
+  text-decoration: none;
+  transition: all 150ms ease-in-out;
+}
+
+.sourceCodeLink:hover {
+  color: #f0a07b;
+}
