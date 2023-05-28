@@ -1,0 +1,134 @@
+body {
+  background-color: #f2dab6;
+}
+
+button {
+  border: none;
+  border-radius: 20px;
+  padding: 20px;
+  background-color: #f0a07b;
+  color: #fffbf3;
+  transition: all 180ms ease-in-out;
+}
+
+button:hover {
+  background-color: #f1bd99;
+  color: #fffbf3;
+}
+
+h1 {
+  text-align: center;
+  font-size: 70px;
+  font-family: "Inter", sans-serif;
+  color: #474747;
+}
+
+h2 {
+  text-align: center;
+  font-size: 40px;
+  font-family: "Roboto", sans-serif;
+  color: #f0a07b;
+  line-height: 30px;
+}
+
+h3 {
+  text-align: center;
+  font-size: 35px;
+  line-height: 40px;
+  color: #8e87b7;
+  font-family: "Poppins", sans-serif;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.header {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  padding: 2px;
+}
+
+.searchCurrentLocation {
+  background-color: #8e87b7;
+}
+
+.searchCurrentLocation:hover {
+  background-color: #aea9d0;
+}
+
+.containerSite {
+  width: 800px;
+  display: block;
+  margin: 10px auto;
+  padding: 20px;
+  border: none;
+  border-radius: 20px;
+  background-color: #fff7e7;
+}
+
+.searchEngineForm {
+  display: inline-block;
+}
+
+.searchEngine {
+  width: 520px;
+  padding: 20px;
+  border: none;
+  border-radius: 20px;
+  background-color: #f2dab6;
+  outline: none;
+  transition: all 180ms ease-in-out;
+}
+
+.searchEngine:hover {
+  background-color: #f9e9cf;
+}
+
+.currentWeather {
+  display: block;
+  margin: 30px;
+  text-align: center;
+}
+
+.fa-circle {
+  display: block;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 250px;
+  color: #f1bd99;
+}
+
+.currentConditions {
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  font-size: 20px;
+  color: #474747;
+}
+
+.precip,
+.humid,
+.wind {
+  display: inline;
+  text-align: center;
+}
+
+.containerFutureForecasts {
+  display: block;
+  margin: 0 auto;
+  width: 400px;
+}
+
+.futureDays {
+  text-align: left;
+}
+
+.futureTemps {
+  text-align: center;
+}
+
+.futureIcons {
+  text-align: center;
+}
