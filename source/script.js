@@ -54,11 +54,11 @@ function defineWeather(response) {
 function usePosition(location) {
   let lat = location.coords.latitude;
   let lon = location.coords.longitude;
-  let apiWeatherKey = "ced535c990f2f1fd90eb8f919fb296fa";
-  let apiWeatherURL = "https://api.openweathermap.org/data/2.5/weather?";
+  let apiWeatherKey = "444tf5d2456e80bfca6a8o00f90438b9";
+  let apiWeatherURL = "https://api.shecodes.io/weather/v1/current?";
   axios
     .get(
-      `${apiWeatherURL}&lat=${lat}&lon=${lon}&appid=${apiWeatherKey}&units=metric`
+      `${apiWeatherURL}&lat=${lat}&lon=${lon}&key=${apiWeatherKey}&units=metric`
     )
     .then(defineWeather);
 }
