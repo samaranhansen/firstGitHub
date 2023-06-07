@@ -3,7 +3,7 @@ function displayWeather(response) {
   console.log(response.data);
   let city = response.data.city;
   let temperature = Math.round(response.data.temperature.current);
-  let humidity = Math.round(response.temperature.humidity);
+  let humidity = Math.round(response.data.temperature.humidity);
   let windspeed = Math.round(response.data.wind.speed);
   let description = response.data.condition.description;
   let cityElement = document.querySelector("#current-city");
