@@ -13,5 +13,5 @@ function displayWeather(response) {
 
 let apiKey = "444tf5d2456e80bfca6a8o00f90438b9";
 let apiURL = "";
-axios.get(`${apiURL}&query=Tyler&key=${apiKey}`).then(displayTemperature);
+axios.get(`${apiURL}&query=Tyler&key=${apiKey}`).then(displayWeather);
 alert("Working");
