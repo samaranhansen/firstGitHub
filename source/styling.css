@@ -108,9 +108,9 @@ ul {
   color: #474747;
 }
 
-.precip,
 .humid,
-.wind {
+.wind,
+.desc {
   display: inline;
   text-align: center;
 }
