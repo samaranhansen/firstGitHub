@@ -37,9 +37,9 @@ let searchForm = document.querySelector("#search-engine-form");
 // Current Location
 function defineWeather(response) {
   console.log(response);
-  let temperature = Math.round(response.data.temperature.day);
+  let temperature = Math.round(response.data.temperature.current);
   let tempDisplay = `${temperature}° C`;
-  let humid = Math.round(response.data.main.humidity);
+  let humid = Math.round(response.data.temperature.humidity);
   let humidDisplay = `💧 ${humid}%`;
   let windspeed = Math.round(response.data.wind.speed);
   let windspeedDisplay = `💨 ${windspeed} MPS`;
