@@ -12,12 +12,16 @@ function displayWeather(response) {
   let descriptionElement = document.querySelector("#current-description");
   console.log(temperature);
   cityElement.innerHTML = city;
-  temperatureElement.innerHTML = temperature;
-  humidityElement.innerHTML = `🌫 ${humidity}`;
-  windspeedElement.innerHTML = `🍃 ${windspeed}`;
+  temperatureElement.innerHTML = `${temperature}°`;
+  humidityElement.innerHTML = `🌫 ${humidity}%`;
+  windspeedElement.innerHTML = `🍃 ${windspeed} mps`;
   descriptionElement.innerHTML = description;
 }
 
 let apiKey = "444tf5d2456e80bfca6a8o00f90438b9";
 let apiURL = "https://api.shecodes.io/weather/v1/current?";
-axios.get(`${apiURL}&query=Tyler&key=${apiKey}`).then(displayWeather);
+axios
+  .get(`${apiURL}&query=Tyler&key=${apiKey}&units=metric`)
+  .then(displayWeather);
+
+new Date(1686163550 * 1000);

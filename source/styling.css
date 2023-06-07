@@ -92,6 +92,34 @@ ul {
   text-align: center;
 }
 
+.currentTemp {
+  text-align: center;
+  font-size: 35px;
+  line-height: 40px;
+  color: #8e87b7;
+  font-family: "Poppins", sans-serif;
+}
+
+.tempUnit {
+  position: relative;
+}
+
+.celsiusLink {
+  text-decoration: none;
+  color: #f0a07b;
+  transition: all 150ms ease-in-out;
+}
+
+.celsiusLink:hover {
+  color: #f1bd99;
+}
+
+.fahrenheitLink {
+  text-decoration: none;
+  color: #f0a07b;
+  transition: all 150ms ease-in-out;
+}
+
 .fa-circle {
   display: block;
   margin-top: 20px;
