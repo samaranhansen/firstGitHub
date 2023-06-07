@@ -59,7 +59,7 @@ ul {
 }
 
 .containerSite {
-  max-width: 800px;
+  width: 800px;
   display: block;
   margin: 10px auto;
   padding: 20px;
