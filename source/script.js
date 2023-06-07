@@ -87,8 +87,8 @@ function changeConditions(response) {
   currentCity.innerHTML = cityName;
   let latSearch = response.data[0].lat;
   let lonSearch = response.data[0].lon;
-  let apiSearchKey = "ced535c990f2f1fd90eb8f919fb296fa";
-  let apiSearchURL = "https://api.openweathermap.org/data/2.5/weather?";
+  let apiSearchKey = "444tf5d2456e80bfca6a8o00f90438b9";
+  let apiSearchURL = "https://api.shecodes.io/weather/v1/current?";
   axios
     .get(
       `${apiSearchURL}&lat=${latSearch}&lon=${lonSearch}&appid=${apiSearchKey}&units=metric`
@@ -99,13 +99,13 @@ function changeConditions(response) {
 function changeCity(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-engine-input");
-  if (searchInput.value === undefined || searchInput.value.length < 0) {
+  if (searchInput.value === undefined || searchInput.value.length < 1) {
     alert("Please enter a valid city.");
   } else {
-    let apiCityKey = "ced535c990f2f1fd90eb8f919fb296fa";
-    let apiCityURL = "http://api.openweathermap.org/geo/1.0/direct?";
+    let apiCityKey = "444tf5d2456e80bfca6a8o00f90438b9";
+    let apiCityURL = "https://api.shecodes.io/weather/v1/current?";
     axios
-      .get(`${apiCityURL}&q=${searchInput.value}&appid=${apiCityKey}`)
+      .get(`${apiCityURL}&query=${searchInput.value}&appid=${apiCityKey}`)
       .then(changeConditions);
   }
 }
