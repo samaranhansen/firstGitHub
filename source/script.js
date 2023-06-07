@@ -36,7 +36,8 @@ let searchForm = document.querySelector("#search-engine-form");
 
 // Current Location
 function defineWeather(response) {
-  let temperature = Math.round(response.data.main.temp);
+  console.log(response);
+  let temperature = Math.round(response.data.temperature.day);
   let tempDisplay = `${temperature}° C`;
   let humid = Math.round(response.data.main.humidity);
   let humidDisplay = `💧 ${humid}%`;
