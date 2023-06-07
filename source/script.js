@@ -43,7 +43,7 @@ function defineWeather(response) {
   let humidDisplay = `💧 ${humid}%`;
   let windspeed = Math.round(response.data.wind.speed);
   let windspeedDisplay = `💨 ${windspeed} MPS`;
-  let city = response.data.name;
+  let city = response.data.city;
   currentCity.innerHTML = city;
   currentTemp.innerHTML = tempDisplay;
   currentHumid.innerHTML = humidDisplay;
