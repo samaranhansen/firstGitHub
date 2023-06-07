@@ -33,8 +33,8 @@ h2 {
 
 h3 {
   text-align: center;
-  font-size: 35px;
-  line-height: 40px;
+  font-size: 20px;
+  line-height: 30px;
   color: #8e87b7;
   font-family: "Poppins", sans-serif;
 }
@@ -95,13 +95,15 @@ ul {
 .currentTemp {
   text-align: center;
   font-size: 35px;
-  line-height: 40px;
+  line-height: 30px;
   color: #8e87b7;
   font-family: "Poppins", sans-serif;
 }
 
 .tempUnit {
   position: relative;
+  top: -11px;
+  margin-left: 5px;
 }
 
 .celsiusLink {
@@ -147,6 +149,12 @@ ul {
   text-transform: capitalize;
 }
 
+.descIcon {
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+}
+
 .containerFutureForecasts {
   display: block;
   margin: 0 auto;
@@ -169,7 +177,7 @@ ul {
   display: block;
   margin: 0 auto;
   text-align: center;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .sourceCodeLink {
