@@ -7,10 +7,11 @@ function displayWeather(response) {
   let windspeed = Math.round(response.data.wind.speed);
   let description = response.data.condition.description;
   let cityElement = document.querySelector("#current-city");
-  let temperatureElement = document.querySelector("#current-temperature");
+  let temperatureElement = document.querySelector("#current-temp");
   let humidityElement = document.querySelector("#current-humid");
   let windspeedElement = document.querySelector("#current-wind");
   let descriptionElement = document.querySelector("#current-description");
+  console.log(temperature);
   cityElement.innerHTML = city;
   temperatureElement.innerHTML = temperature;
   humidityElement.innerHTML = humidity;
