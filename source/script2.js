@@ -1,11 +1,14 @@
-function displayTemperature(response) {
-  let temperature = Math.round(response.data.temperature.current);
+function displayWeather(response) {
+  console.log(response);
   let city = response.data.city;
-  let temperatureElement = document.querySelector("#current-temperature");
+  let temperature = Math.round(response.data.temperature.current);
+  let humidity = Math.round(response.temperature.humidity);
   let cityElement = document.querySelector("#current-city");
-  temperatureElement.innerHTML = temperature;
+  let temperatureElement = document.querySelector("#current-temperature");
+  let humidityElement = document.querySelector("#current-humidity");
   cityElement.innerHTML = city;
-  alert(temperature);
+  temperatureElement.innerHTML = temperature;
+  humidityElement.innerHTML = humidity;
 }
 
 let apiKey = "444tf5d2456e80bfca6a8o00f90438b9";
