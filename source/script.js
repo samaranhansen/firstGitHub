@@ -70,9 +70,9 @@ function getPosition() {
 
 // Search Engine
 function defineWeatherSearch(response) {
-  let temperature = Math.round(response.data.main.temp);
+  let temperature = Math.round(response.data.temperature.current);
   let tempDisplay = `${temperature}° C`;
-  let humid = Math.round(response.data.main.humidity);
+  let humid = Math.round(response.data.temperature.humidity);
   let humidDisplay = `💧 ${humid}%`;
   let windspeed = Math.round(response.data.wind.speed);
   let windspeedDisplay = `💨 ${windspeed} MPS`;
@@ -83,7 +83,7 @@ function defineWeatherSearch(response) {
 }
 
 function changeConditions(response) {
-  let cityName = response.data[0].name;
+  let cityName = response.data[0].city;
   currentCity.innerHTML = cityName;
   let latSearch = response.data[0].lat;
   let lonSearch = response.data[0].lon;
