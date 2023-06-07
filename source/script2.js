@@ -1,5 +1,4 @@
 function displayWeather(response) {
-  alert("Working");
   console.log(response.data);
   let city = response.data.city;
   let temperature = Math.round(response.data.temperature.current);

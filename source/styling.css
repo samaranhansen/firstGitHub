@@ -115,6 +115,10 @@ ul {
   text-align: center;
 }
 
+.desc {
+  text-transform: capitalize;
+}
+
 .containerFutureForecasts {
   display: block;
   margin: 0 auto;
