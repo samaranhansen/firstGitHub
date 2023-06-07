@@ -1,5 +1,6 @@
 function displayWeather(response) {
-  console.log(response);
+  alert("Working");
+  console.log(response.data);
   let city = response.data.city;
   let temperature = Math.round(response.data.temperature.current);
   let humidity = Math.round(response.temperature.humidity);
@@ -20,4 +21,3 @@ function displayWeather(response) {
 let apiKey = "444tf5d2456e80bfca6a8o00f90438b9";
 let apiURL = "https://api.shecodes.io/weather/v1/current?";
 axios.get(`${apiURL}&query=Tyler&key=${apiKey}`).then(displayWeather);
-alert("Working");
