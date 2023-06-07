@@ -13,8 +13,8 @@ function displayWeather(response) {
   console.log(temperature);
   cityElement.innerHTML = city;
   temperatureElement.innerHTML = temperature;
-  humidityElement.innerHTML = humidity;
-  windspeedElement.innerHTML = windspeed;
+  humidityElement.innerHTML = `🌫 ${humidity}`;
+  windspeedElement.innerHTML = `🍃 ${windspeed}`;
   descriptionElement.innerHTML = description;
 }
 
