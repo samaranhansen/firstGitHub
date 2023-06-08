@@ -42,7 +42,7 @@ function displayWeatherCelsius(response) {
   cityElement.innerHTML = cityName;
   temperatureElement.innerHTML = `${temperature}°`;
   humidityElement.innerHTML = `🌫 ${humidity}% humidity`;
-  windspeedElement.innerHTML = `🍃 ${windspeed} mps`;
+  windspeedElement.innerHTML = `🍃 ${windspeed} mps windspeed`;
   descriptionElement.innerHTML = description;
   datetimeElement.innerHTML = formatDate(response.data.time * 1000);
   iconElement.setAttribute(
@@ -72,7 +72,7 @@ function displayWeatherFahrenheit(response) {
   cityElement.innerHTML = cityName;
   temperatureElement.innerHTML = `${temperature}°`;
   humidityElement.innerHTML = `🌫 ${humidity}% humidity`;
-  windspeedElement.innerHTML = `🍃 ${windspeed} mph`;
+  windspeedElement.innerHTML = `🍃 ${windspeed} mph windspeed`;
   descriptionElement.innerHTML = description;
   datetimeElement.innerHTML = formatDate(response.data.time * 1000);
   iconElement.setAttribute(
@@ -81,13 +81,6 @@ function displayWeatherFahrenheit(response) {
   );
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
-}
-
-function search(event) {
-  event.preventDefault();
-  axios
-    .get(`${apiURL}&query=${searchInput.value}&key=${apiKey}&units=metric`)
-    .then(displayWeatherCelsius);
 }
 
 function toCelsius(event) {
