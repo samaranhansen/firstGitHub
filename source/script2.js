@@ -23,7 +23,7 @@ function formatDate(timestamp) {
 
 function displayWeather(response) {
   console.log(response.data);
-  let city = response.data.city;
+  let cityName = response.data.city;
   let temperature = Math.round(response.data.temperature.current);
   let humidity = Math.round(response.data.temperature.humidity);
   let windspeed = Math.round(response.data.wind.speed);
@@ -37,7 +37,7 @@ function displayWeather(response) {
   let datetimeElement = document.querySelector("#current-datetime");
   let iconElement = document.querySelector("#desc-icon");
   console.log(temperature);
-  cityElement.innerHTML = city;
+  cityElement.innerHTML = cityName;
   temperatureElement.innerHTML = `${temperature}°`;
   humidityElement.innerHTML = `🌫 ${humidity}% humidity`;
   windspeedElement.innerHTML = `🍃 ${windspeed} mps`;
@@ -49,8 +49,15 @@ function displayWeather(response) {
   );
 }
 
-let apiKey = "444tf5d2456e80bfca6a8o00f90438b9";
-let apiURL = "https://api.shecodes.io/weather/v1/current?";
-axios
-  .get(`${apiURL}&query=Tyler&key=${apiKey}&units=metric`)
-  .then(displayWeather);
+function search(event) {
+  event.preventDefault();
+  let searchInput = document.querySelector("#search-engine-input");
+  let apiKey = "444tf5d2456e80bfca6a8o00f90438b9";
+  let apiURL = "https://api.shecodes.io/weather/v1/current?";
+  axios
+    .get(`${apiURL}&query=${searchInput.value}&key=${apiKey}&units=metric`)
+    .then(displayWeather);
+}
+
+let searchCityForm = document.querySelector("#search-engine-form");
+searchCityForm.addEventListener("submit", search);
