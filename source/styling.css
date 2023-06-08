@@ -114,12 +114,27 @@ ul {
 
 .celsiusLink:hover {
   color: #f1bd99;
+  cursor: pointer;
 }
 
 .fahrenheitLink {
   text-decoration: none;
   color: #f0a07b;
   transition: all 150ms ease-in-out;
+}
+
+.fahrenheitLink:hover {
+  color: #f1bd99;
+  cursor: pointer;
+}
+
+.active {
+  color: #474747;
+  cursor: default;
+}
+
+.active:hover {
+  color: #8e87b7;
 }
 
 .fa-circle {

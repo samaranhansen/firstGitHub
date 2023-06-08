@@ -1,3 +1,4 @@
+// Time Formatting
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
@@ -21,7 +22,8 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function displayWeather(response) {
+// Weather Display
+function displayWeatherCelsius(response) {
   console.log(response.data);
   let cityName = response.data.city;
   let temperature = Math.round(response.data.temperature.current);
@@ -47,17 +49,72 @@ function displayWeather(response) {
     "src",
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${icon}.png`
   );
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+}
+
+function displayWeatherFahrenheit(response) {
+  console.log(response.data);
+  let cityName = response.data.city;
+  let temperature = Math.round(response.data.temperature.current);
+  let humidity = Math.round(response.data.temperature.humidity);
+  let windspeed = Math.round(response.data.wind.speed);
+  let description = response.data.condition.description;
+  let icon = response.data.condition.icon;
+  let cityElement = document.querySelector("#current-city");
+  let temperatureElement = document.querySelector("#current-temp");
+  let humidityElement = document.querySelector("#current-humid");
+  let windspeedElement = document.querySelector("#current-wind");
+  let descriptionElement = document.querySelector("#current-desc");
+  let datetimeElement = document.querySelector("#current-datetime");
+  let iconElement = document.querySelector("#desc-icon");
+  console.log(temperature);
+  cityElement.innerHTML = cityName;
+  temperatureElement.innerHTML = `${temperature}°`;
+  humidityElement.innerHTML = `🌫 ${humidity}% humidity`;
+  windspeedElement.innerHTML = `🍃 ${windspeed} mph`;
+  descriptionElement.innerHTML = description;
+  datetimeElement.innerHTML = formatDate(response.data.time * 1000);
+  iconElement.setAttribute(
+    "src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${icon}.png`
+  );
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
 }
 
 function search(event) {
   event.preventDefault();
-  let searchInput = document.querySelector("#search-engine-input");
-  let apiKey = "444tf5d2456e80bfca6a8o00f90438b9";
-  let apiURL = "https://api.shecodes.io/weather/v1/current?";
   axios
     .get(`${apiURL}&query=${searchInput.value}&key=${apiKey}&units=metric`)
-    .then(displayWeather);
+    .then(displayWeatherCelsius);
 }
 
+function toCelsius(event) {
+  event.preventDefault();
+  axios
+    .get(`${apiURL}&query=${searchInput.value}&key=${apiKey}&units=metric`)
+    .then(displayWeatherCelsius);
+}
+
+function toFahrenheit(event) {
+  event.preventDefault();
+  axios
+    .get(`${apiURL}&query=${searchInput.value}&key=${apiKey}&units=imperial`)
+    .then(displayWeatherFahrenheit);
+}
+
+// Variables
+let apiKey = "444tf5d2456e80bfca6a8o00f90438b9";
+let apiURL = "https://api.shecodes.io/weather/v1/current?";
+
 let searchCityForm = document.querySelector("#search-engine-form");
-searchCityForm.addEventListener("submit", search);
+let searchInput = document.querySelector("#search-engine-input");
+
+let celsiusLink = document.querySelector("#celsius");
+let fahrenheitLink = document.querySelector("#fahrenheit");
+
+// Events
+searchCityForm.addEventListener("submit", toCelsius);
+celsiusLink.addEventListener("click", toCelsius);
+fahrenheitLink.addEventListener("click", toFahrenheit);
