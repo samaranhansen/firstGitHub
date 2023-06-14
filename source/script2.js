@@ -22,6 +22,11 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+// Forecast Display
+function displayForecastCelcius(response) {}
+
+function displayForecastFahrenheit(response) {}
+
 // Weather Display
 function displayWeatherCelsius(response) {
   console.log(response.data);
