@@ -23,8 +23,10 @@ function formatDate(timestamp) {
 }
 
 // Forecast Display
-function displayForecastCelcius(response) {}
-
+function displayForecastCelsius() {
+  forecastDay.innerHTML = "";
+}
+displayForecastCelsius();
 function displayForecastFahrenheit(response) {}
 
 // Weather Display
@@ -111,6 +113,10 @@ let searchInput = document.querySelector("#search-engine-input");
 
 let celsiusLink = document.querySelector("#celsius");
 let fahrenheitLink = document.querySelector("#fahrenheit");
+
+let forecastDay = document.querySelector("#day-list");
+let forecastTemp = document.querySelector("#temp-list");
+let forecastIcon = document.querySelector("#icon-list");
 
 // Events
 searchCityForm.addEventListener("submit", toCelsius);
