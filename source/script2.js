@@ -38,14 +38,32 @@ function formatForecastDay(timestamp) {
 }
 
 // Search Current Location
-function usePosition(location) {
+function usePositionImperial(location) {
   let lat = location.coords.latitude;
   let lon = location.coords.longitude;
-  axios.get(`${apiURL}&lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`);
+  axios
+    .get(`${apiURL}&lon=${lon}&lat=${lat}&key=${apiKey}&units=imperial`)
+    .then(displayWeatherFahrenheit);
+  axios
+    .get(`${apiForecastURL}&lon=${lon}&lat=${lat}&key=${apiKey}&units=imperial`)
+    .then(displayForecast);
+  CelsiusLink.addEventListener("click", usePositionMetric);
+}
+
+function usePositionMetric(location) {
+  let lat = location.coords.latitude;
+  let lon = location.coords.longitude;
+  axios
+    .get(`${apiURL}&lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`)
+    .then(displayWeatherCelsius);
+  axios
+    .get(`${apiForecastURL}&lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`)
+    .then(displayForecast);
+  fahrenheitLink.addEventListener("click", usePositionImperial);
 }
 
 function getLocation() {
-  navigator.geolocation.getCurrentPosition(usePosition);
+  navigator.geolocation.getCurrentPosition(usePositionMetric);
 }
 
 // Forecast Display
