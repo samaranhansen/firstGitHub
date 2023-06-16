@@ -83,12 +83,32 @@ function displayWeatherFahrenheit(response) {
   );
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
+  forecast.innerHTML = `<div class="col-4 futureDays" id="future-days">
+            <ul class="dayList" id="day-list">
+              <li>Tomorrow</li>
+            </ul>
+          </div>
+          <div class="col-4 futureTemps" id="future-temps">
+            <ul class="tempList" id="temp-list">
+              <li>46° / 67°</li>
+            </ul>
+          </div>
+          <div class="col-4 futureIcons" id="future-icons">
+            <ul class="iconList" id="icon-list">
+              <li>🌧</li>
+            </ul>
+          </div>`;
 }
 
 function toCelsius(event) {
   event.preventDefault();
   axios
     .get(`${apiURL}&query=${searchInput.value}&key=${apiKey}&units=metric`)
+    .then(displayWeatherCelsius);
+  axios
+    .get(
+      `${apiForecastURL}&query=${searchInput.value}&key=${apiKey}&units=metric`
+    )
     .then(displayWeatherCelsius);
 }
 
@@ -97,17 +117,27 @@ function toFahrenheit(event) {
   axios
     .get(`${apiURL}&query=${searchInput.value}&key=${apiKey}&units=imperial`)
     .then(displayWeatherFahrenheit);
+  axios
+    .get(
+      `${apiForecastURL}&query=${searchInput.value}&key=${apiKey}&units=imperial`
+    )
+    .then(displayWeatherFahrenheit);
 }
+
+// Forecasts
 
 // Variables
 let apiKey = "444tf5d2456e80bfca6a8o00f90438b9";
 let apiURL = "https://api.shecodes.io/weather/v1/current?";
+let apiForecastURL = "https://api.shecodes.io/weather/v1/forecast?";
 
 let searchCityForm = document.querySelector("#search-engine-form");
 let searchInput = document.querySelector("#search-engine-input");
 
 let celsiusLink = document.querySelector("#celsius");
 let fahrenheitLink = document.querySelector("#fahrenheit");
+
+let forecast = document.querySelector("#future-forecasts");
 
 // Events
 searchCityForm.addEventListener("submit", toCelsius);
