@@ -23,7 +23,30 @@ function formatDate(timestamp) {
 }
 
 // Forecast Display
+function displayForecastCelsius(response) {
+  let forecast = response.data.daily[0];
+  let forecastHTML = `<div class="row">`;
+  let forecastDay = response.data.daily[0].time;
+  let forecastIcon = response.data.daily[0].condition.icon_url;
+  let forecastDescription = response.data.daily[0].condition.description;
+  let forecastTempMax = Math.round(response.data.daily[0].temperature.maximum);
+  let forecastTempMin = Math.round(response.data.daily[0].temperature.minimum);
 
+  forecast.forEach(function (forecastDay) {
+    forecastHTML += `<div class="col">${forecastDay}</div>
+      <img src="${forecastIcon}" alt="${forecastDescription}" width="40">
+      <div class="forecast-temp">
+      <span class="forecast-temp-max">${forecastTempMax}°</span>
+      <span class="forecast-temp-min">${forecastTempMin}°</span>
+      </div>
+      </div>`;
+  });
+  forecastElement.innerHTML = forecastHTML;
+}
+
+function displayForecastFahrenheit(response) {
+  console.log(response.data);
+}
 // Weather Display
 function displayWeatherCelsius(response) {
   console.log(response.data);
@@ -83,21 +106,6 @@ function displayWeatherFahrenheit(response) {
   );
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
-  forecast.innerHTML = `<div class="col-4 futureDays" id="future-days">
-            <ul class="dayList" id="day-list">
-              <li>Tomorrow</li>
-            </ul>
-          </div>
-          <div class="col-4 futureTemps" id="future-temps">
-            <ul class="tempList" id="temp-list">
-              <li>46° / 67°</li>
-            </ul>
-          </div>
-          <div class="col-4 futureIcons" id="future-icons">
-            <ul class="iconList" id="icon-list">
-              <li>🌧</li>
-            </ul>
-          </div>`;
 }
 
 function toCelsius(event) {
@@ -109,7 +117,7 @@ function toCelsius(event) {
     .get(
       `${apiForecastURL}&query=${searchInput.value}&key=${apiKey}&units=metric`
     )
-    .then(displayWeatherCelsius);
+    .then(displayForecastCelsius);
 }
 
 function toFahrenheit(event) {
@@ -121,10 +129,8 @@ function toFahrenheit(event) {
     .get(
       `${apiForecastURL}&query=${searchInput.value}&key=${apiKey}&units=imperial`
     )
-    .then(displayWeatherFahrenheit);
+    .then(displayForecastFahrenheit);
 }
-
-// Forecasts
 
 // Variables
 let apiKey = "444tf5d2456e80bfca6a8o00f90438b9";
@@ -137,9 +143,10 @@ let searchInput = document.querySelector("#search-engine-input");
 let celsiusLink = document.querySelector("#celsius");
 let fahrenheitLink = document.querySelector("#fahrenheit");
 
-let forecast = document.querySelector("#future-forecasts");
+let forecastElement = document.querySelector("#forecasts");
 
 // Events
 searchCityForm.addEventListener("submit", toCelsius);
 celsiusLink.addEventListener("click", toCelsius);
 fahrenheitLink.addEventListener("click", toFahrenheit);
+currentLocationButton.addEventListener("click", getLocation);
