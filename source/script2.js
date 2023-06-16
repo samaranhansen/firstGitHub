@@ -37,37 +37,44 @@ function formatForecastDay(timestamp) {
   return forecastDay;
 }
 
+// Search Current Location
+function usePosition(location) {
+  let lat = location.coords.latitude;
+  let lon = location.coords.longitude;
+  axios.get(`${apiURL}&lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`);
+}
+
+function getLocation() {
+  navigator.geolocation.getCurrentPosition(usePosition);
+}
+
 // Forecast Display
 function displayForecast(response) {
   let forecast = response.data.daily;
-  forecast.shift();
-  let forecastHTML = `<div class="row">`;
-
-  function forecastInfo(forecastDay) {
-    forecastHTML += `<div class="col">${formatForecastDay(
-      forecastDay.time
-    )}</div>
+  let forecastElement = document.querySelector("#forecast-container");
+  let forecastHTML = `<ul>`;
+  function forecastInfo(forecastDay, index) {
+    if (index < 7 && index > 0) {
+      forecastHTML += `<li>${formatForecastDay(forecastDay.time)}</div>
       <img src="${forecastDay.condition.icon_url}" alt="${
-      forecastDay.condition.description
-    }" width="40">
+        forecastDay.condition.description
+      }" width="20">
       <div class="forecast-temp">
-      <span class="forecast-temp-max">${Math.round(
+      <span class="forecast-temp-max"><strong>${Math.round(
         forecastDay.temperature.maximum
-      )}°</span>
+      )}°</strong></span>
       <span class="forecast-temp-min">${Math.round(
         forecastDay.temperature.minimum
       )}°</span>
       </div>
-      </div>`;
+      </li>`;
+    }
   }
   forecast.forEach(forecastInfo);
-  forecastHTML += `</div>`;
+  forecastHTML += `</ul>`;
   forecastElement.innerHTML = forecastHTML;
 }
 
-function displayForecastFahrenheit(response) {
-  console.log(response.data);
-}
 // Weather Display
 function displayWeatherCelsius(response) {
   console.log(response.data);
@@ -164,9 +171,10 @@ let searchInput = document.querySelector("#search-engine-input");
 let celsiusLink = document.querySelector("#celsius");
 let fahrenheitLink = document.querySelector("#fahrenheit");
 
-let forecastElement = document.querySelector("#forecasts");
+let currentLocation = document.querySelector("#search-current-location");
 
 // Events
 searchCityForm.addEventListener("submit", toCelsius);
 celsiusLink.addEventListener("click", toCelsius);
 fahrenheitLink.addEventListener("click", toFahrenheit);
+currentLocation.addEventListener("click", getLocation);

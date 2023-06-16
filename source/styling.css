@@ -41,6 +41,14 @@ h3 {
 
 ul {
   list-style-type: none;
+  display: block;
+  margin: 0 auto;
+}
+
+li {
+  display: inline-block;
+  margin-left: 20px;
+  margin-right: 5px;
 }
 
 .header {
@@ -205,7 +213,7 @@ ul {
   color: #f0a07b;
 }
 
-.forecasts {
-  display: inline block;
-  margin: 0 auto;
+.containerForecasts {
+  display: block;
+  margin: 20px auto;
 }
