@@ -204,3 +204,8 @@ ul {
 .sourceCodeLink:hover {
   color: #f0a07b;
 }
+
+.forecasts {
+  display: inline block;
+  margin: 0 auto;
+}

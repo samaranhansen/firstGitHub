@@ -22,25 +22,46 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-// Forecast Display
-function displayForecastCelsius(response) {
-  let forecast = response.data.daily[0];
-  let forecastHTML = `<div class="row">`;
-  let forecastDay = response.data.daily[0].time;
-  let forecastIcon = response.data.daily[0].condition.icon_url;
-  let forecastDescription = response.data.daily[0].condition.description;
-  let forecastTempMax = Math.round(response.data.daily[0].temperature.maximum);
-  let forecastTempMin = Math.round(response.data.daily[0].temperature.minimum);
+function formatForecastDay(timestamp) {
+  let forecastDate = new Date(timestamp * 1000);
+  let forecastDayNames = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let forecastDay = forecastDayNames[forecastDate.getDay()];
+  return forecastDay;
+}
 
-  forecast.forEach(function (forecastDay) {
-    forecastHTML += `<div class="col">${forecastDay}</div>
-      <img src="${forecastIcon}" alt="${forecastDescription}" width="40">
+// Forecast Display
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  forecast.shift();
+  let forecastHTML = `<div class="row">`;
+
+  function forecastInfo(forecastDay) {
+    forecastHTML += `<div class="col">${formatForecastDay(
+      forecastDay.time
+    )}</div>
+      <img src="${forecastDay.condition.icon_url}" alt="${
+      forecastDay.condition.description
+    }" width="40">
       <div class="forecast-temp">
-      <span class="forecast-temp-max">${forecastTempMax}°</span>
-      <span class="forecast-temp-min">${forecastTempMin}°</span>
+      <span class="forecast-temp-max">${Math.round(
+        forecastDay.temperature.maximum
+      )}°</span>
+      <span class="forecast-temp-min">${Math.round(
+        forecastDay.temperature.minimum
+      )}°</span>
       </div>
       </div>`;
-  });
+  }
+  forecast.forEach(forecastInfo);
+  forecastHTML += `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 
@@ -117,7 +138,7 @@ function toCelsius(event) {
     .get(
       `${apiForecastURL}&query=${searchInput.value}&key=${apiKey}&units=metric`
     )
-    .then(displayForecastCelsius);
+    .then(displayForecast);
 }
 
 function toFahrenheit(event) {
@@ -129,7 +150,7 @@ function toFahrenheit(event) {
     .get(
       `${apiForecastURL}&query=${searchInput.value}&key=${apiKey}&units=imperial`
     )
-    .then(displayForecastFahrenheit);
+    .then(displayForecast);
 }
 
 // Variables
@@ -149,4 +170,3 @@ let forecastElement = document.querySelector("#forecasts");
 searchCityForm.addEventListener("submit", toCelsius);
 celsiusLink.addEventListener("click", toCelsius);
 fahrenheitLink.addEventListener("click", toFahrenheit);
-currentLocationButton.addEventListener("click", getLocation);
