@@ -37,43 +37,6 @@ function formatForecastDay(timestamp) {
   return forecastDay;
 }
 
-// Search Current Location
-function getPositionMetric() {
-  navigator.geolocation.getCurrentPosition(usePositionMetric);
-}
-
-function getPositionImperial() {
-  navigator.geolocation.getCurrentPosition(usePositionImperial);
-}
-
-function usePositionMetric(location) {
-  let lat = location.coords.latitude;
-  let lon = location.coords.longitude;
-  axios
-    .get(`${apiURL}&lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`)
-    .then(displayWeatherCelsius);
-  axios
-    .get(`${apiForecastURL}&lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`)
-    .then(displayForecast);
-  if (usePositionMetric) {
-    fahrenheitLink.addEventListener("click", getPositionImperial);
-  }
-}
-
-function usePositionImperial(location) {
-  let lat = location.coords.latitude;
-  let lon = location.coords.longitude;
-  axios
-    .get(`${apiURL}&lon=${lon}&lat=${lat}&key=${apiKey}&units=imperial`)
-    .then(displayWeatherFahrenheit);
-  axios
-    .get(`${apiForecastURL}&lon=${lon}&lat=${lat}&key=${apiKey}&units=imperial`)
-    .then(displayForecast);
-  if (usePositionImperial) {
-    celsiusLink.addEventListener("click", getPositionMetric);
-  }
-}
-
 // Forecast Display
 function displayForecast(response) {
   let forecast = response.data.daily;
@@ -203,4 +166,3 @@ let currentPosition = document.querySelector("#search-current-location");
 searchCityForm.addEventListener("submit", toCelsius);
 celsiusLink.addEventListener("click", toCelsius);
 fahrenheitLink.addEventListener("click", toFahrenheit);
-currentPosition.addEventListener("click", getPositionMetric);
