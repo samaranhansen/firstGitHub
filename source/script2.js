@@ -38,16 +38,12 @@ function formatForecastDay(timestamp) {
 }
 
 // Search Current Location
-function usePositionImperial(location) {
-  let lat = location.coords.latitude;
-  let lon = location.coords.longitude;
-  axios
-    .get(`${apiURL}&lon=${lon}&lat=${lat}&key=${apiKey}&units=imperial`)
-    .then(displayWeatherFahrenheit);
-  axios
-    .get(`${apiForecastURL}&lon=${lon}&lat=${lat}&key=${apiKey}&units=imperial`)
-    .then(displayForecast);
-  CelsiusLink.addEventListener("click", usePositionMetric);
+function getPositionMetric() {
+  navigator.geolocation.getCurrentPosition(usePositionMetric);
+}
+
+function getPositionImperial() {
+  navigator.geolocation.getCurrentPosition(usePositionImperial);
 }
 
 function usePositionMetric(location) {
@@ -59,11 +55,23 @@ function usePositionMetric(location) {
   axios
     .get(`${apiForecastURL}&lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`)
     .then(displayForecast);
-  fahrenheitLink.addEventListener("click", usePositionImperial);
+  if (usePositionMetric) {
+    fahrenheitLink.addEventListener("click", getPositionImperial);
+  }
 }
 
-function getLocation() {
-  navigator.geolocation.getCurrentPosition(usePositionMetric);
+function usePositionImperial(location) {
+  let lat = location.coords.latitude;
+  let lon = location.coords.longitude;
+  axios
+    .get(`${apiURL}&lon=${lon}&lat=${lat}&key=${apiKey}&units=imperial`)
+    .then(displayWeatherFahrenheit);
+  axios
+    .get(`${apiForecastURL}&lon=${lon}&lat=${lat}&key=${apiKey}&units=imperial`)
+    .then(displayForecast);
+  if (usePositionImperial) {
+    celsiusLink.addEventListener("click", getPositionMetric);
+  }
 }
 
 // Forecast Display
@@ -189,10 +197,10 @@ let searchInput = document.querySelector("#search-engine-input");
 let celsiusLink = document.querySelector("#celsius");
 let fahrenheitLink = document.querySelector("#fahrenheit");
 
-let currentLocation = document.querySelector("#search-current-location");
+let currentPosition = document.querySelector("#search-current-location");
 
 // Events
 searchCityForm.addEventListener("submit", toCelsius);
 celsiusLink.addEventListener("click", toCelsius);
 fahrenheitLink.addEventListener("click", toFahrenheit);
-currentLocation.addEventListener("click", getLocation);
+currentPosition.addEventListener("click", getPositionMetric);
