@@ -1,3 +1,16 @@
+// Variables
+let apiKey = "444tf5d2456e80bfca6a8o00f90438b9";
+let apiURL = "https://api.shecodes.io/weather/v1/current?";
+let apiForecastURL = "https://api.shecodes.io/weather/v1/forecast?";
+
+let searchCityForm = document.querySelector("#search-engine-form");
+let searchInput = document.querySelector("#search-engine-input");
+
+let celsiusLink = document.querySelector("#celsius");
+let fahrenheitLink = document.querySelector("#fahrenheit");
+
+let currentPosition = document.querySelector("#search-current-location");
+
 // Time Formatting
 function formatDate(timestamp) {
   let date = new Date(timestamp);
@@ -148,19 +161,6 @@ function toFahrenheit(event) {
     )
     .then(displayForecast);
 }
-
-// Variables
-let apiKey = "444tf5d2456e80bfca6a8o00f90438b9";
-let apiURL = "https://api.shecodes.io/weather/v1/current?";
-let apiForecastURL = "https://api.shecodes.io/weather/v1/forecast?";
-
-let searchCityForm = document.querySelector("#search-engine-form");
-let searchInput = document.querySelector("#search-engine-input");
-
-let celsiusLink = document.querySelector("#celsius");
-let fahrenheitLink = document.querySelector("#fahrenheit");
-
-let currentPosition = document.querySelector("#search-current-location");
 
 // Events
 searchCityForm.addEventListener("submit", toCelsius);
