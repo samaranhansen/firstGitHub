@@ -169,9 +169,9 @@ function toFahrenheit(event) {
 function search(event) {
   event.preventDefault();
   if (celsius == true) {
-    toCelsius;
+    toCelsius();
   } else {
-    toFahrenheit;
+    toFahrenheit();
   }
 }
 
