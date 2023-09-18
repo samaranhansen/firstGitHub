@@ -11,8 +11,6 @@ let fahrenheitLink = document.querySelector("#fahrenheit");
 
 let currentPosition = document.querySelector("#search-current-location");
 
-let celsius = true;
-
 // Time Formatting
 function formatDate(timestamp) {
   let date = new Date(timestamp);
@@ -141,7 +139,6 @@ function displayWeatherFahrenheit(response) {
 }
 
 function toCelsius(event) {
-  celsius = true;
   event.preventDefault();
   axios
     .get(`${apiURL}&query=${searchInput.value}&key=${apiKey}&units=metric`)
@@ -154,7 +151,6 @@ function toCelsius(event) {
 }
 
 function toFahrenheit(event) {
-  celsius = false;
   event.preventDefault();
   axios
     .get(`${apiURL}&query=${searchInput.value}&key=${apiKey}&units=imperial`)
@@ -166,16 +162,7 @@ function toFahrenheit(event) {
     .then(displayForecast);
 }
 
-function search(event) {
-  event.preventDefault();
-  if (celsius == true) {
-    toCelsius();
-  } else {
-    toFahrenheit();
-  }
-}
-
 // Events
-searchCityForm.addEventListener("submit", search);
+searchCityForm.addEventListener("submit", toCelsius);
 celsiusLink.addEventListener("click", toCelsius);
 fahrenheitLink.addEventListener("click", toFahrenheit);
