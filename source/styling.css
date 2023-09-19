@@ -89,7 +89,7 @@ input::placeholder {
   text-align: center;
   display: block;
   margin: 0 auto;
-  padding: 2px;
+  padding: 0px 0px;
 }
 
 .searchCurrentLocation {
@@ -101,9 +101,9 @@ input::placeholder {
 }
 
 .containerSite {
-  width: 800px;
+  max-width: 800px;
   display: block;
-  margin: 10px auto;
+  margin: 20px auto;
   padding: 20px;
   border: none;
   border-radius: 20px;
@@ -111,11 +111,14 @@ input::placeholder {
 }
 
 .searchEngineForm {
-  display: inline-block;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 5px;
+  width: 100%;
 }
 
 .searchEngine {
-  width: 520px;
+  width: 85%;
   padding: 20px;
   border: none;
   border-radius: 20px;
