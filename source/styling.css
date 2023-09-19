@@ -46,7 +46,7 @@ h1 {
   text-align: center;
   font-size: 70px;
   font-family: "Inter", sans-serif;
-  color: var(--dark-pink);
+  color: var(--dark-lilac);
 }
 
 h2 {
@@ -79,6 +79,10 @@ li {
 
 p {
   color: var(--dark-pink);
+}
+
+input::placeholder {
+  color: var(--darker-pink);
 }
 
 .header {
@@ -116,6 +120,7 @@ p {
   border: none;
   border-radius: 20px;
   background-color: var(--light-pink);
+  color: var(--darker-pink);
   outline: none;
   transition: all 180ms ease-in-out;
 }
@@ -135,7 +140,7 @@ p {
   text-align: center;
   font-size: 35px;
   line-height: 30px;
-  color: var(--darker-lilac);
+  color: var(--dark-lilac);
   font-family: "Poppins", sans-serif;
 }
 
@@ -227,7 +232,7 @@ p {
 }
 
 .sourceCodeLink {
-  color: #8e87b7;
+  color: var(--darker-pink);
   text-decoration: none;
   transition: all 150ms ease-in-out;
 }
