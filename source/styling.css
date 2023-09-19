@@ -244,4 +244,5 @@ input::placeholder {
 .containerForecasts {
   display: block;
   margin: 20px auto;
+  color: var(--darker-lilac);
 }
