@@ -155,23 +155,23 @@ input::placeholder {
 
 .celsiusLink {
   text-decoration: none;
-  color: var(--dark-lilac);
+  color: var(--light-lilac);
   transition: all 150ms ease-in-out;
 }
 
 .celsiusLink:hover {
-  color: var(--light-lilac);
+  color: var(--lighter-lilac);
   cursor: pointer;
 }
 
 .fahrenheitLink {
   text-decoration: none;
-  color: var(--dark-lilac);
+  color: var(--light-lilac);
   transition: all 150ms ease-in-out;
 }
 
 .fahrenheitLink:hover {
-  color: var(--light-lilac);
+  color: var(--lighter-lilac);
   cursor: pointer;
 }
 
@@ -181,7 +181,7 @@ input::placeholder {
 }
 
 .active:hover {
-  color: var(--dark-lilac);
+  color: var(--dark-pink);
 }
 
 .currentConditions {
